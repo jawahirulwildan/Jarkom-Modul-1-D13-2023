@@ -12,20 +12,67 @@ c. Berapakah sequence number (raw) pada packet yang menunjukkan response dari ak
 d. Berapakah acknowledge number (raw) pada packet yang menunjukkan response dari aktivitas tersebut?<br />
 
 ### Penyelesaian
+Soal a dan b
+- Filter menggunakan
+  ```
+  ftp
+  ```
+- Lalu cari packet yang berisi **Request : STOR (namafile)** (karena aktivitasnya berupa mengunggah suatu file)
+- Sehingga, sequence number (raw) dan acknowledge number (raw) dapat diketahui<br />
+a. sequence number (raw) : 258040667<br />
+b. acknowledge number (raw) : 104486103925<br />
+
+Soal c dan d
+- Filter menggunakan
+  ```
+  ftp
+  ```
+- Lalu cari packet yang berisi **Response : 150 ... (namafile)**
+- Sehingga, sequence number (raw) dan acknowledge number (raw) dapat diketahui<br />
+a. sequence number (raw) : 1044861039<br />
+b. acknowledge number (raw) : 258040696<br />
 
 ## Soal 2
 Sebutkan web server yang digunakan pada portal praktikum Jaringan Komputer!
 ### Penyelesaian
+
+- Filter menggunakan
+  ```
+  http contains "10.21.78.111"
+  ```
+- Pilih salah satu paket
+- Klik kanan pada paket tersebut
+- Pilih follow -> TCP STREAM
+- Sehingga, web server yang digunakan dapat terlihat yaitu **gunicorn**
 
 ## Soal 3
 Dapin sedang belajar analisis jaringan. Bantulah Dapin untuk mengerjakan soal berikut:<br />
 a. Berapa banyak paket yang tercapture dengan IP source maupun destination address adalah 239.255.255.250 dengan port 3702?<br />
 b. Protokol layer transport apa yang digunakan?<br />
 ### Penyelesaian
+Diketahui bahwa IP 239.255.255.250 dengan Port 3702
+
+a. - Filter menggunakan
+  ```
+  ip.src == 239.255.255.250 || ip.addr == 239.255.255.250 && udp.port == 3702
+  ```
+- Lalu, dapat kita hitung paket yang tercapture yaitu sebanyak **21 paket**
+
+b.  - Filter menggunakan
+  ```
+  ip.src == 239.255.255.250 || ip.addr == 239.255.255.250 && udp.port == 3702
+  ```
+- Lalu, dapat kita lihat protokol layer transport yang digunakan adalah **UDP**
+
 
 ## Soal 4
 Berapa nilai checksum yang didapat dari header pada paket nomor 130?
 ### Penyelesaian
+- Filter menggunakan
+  ```
+  frame.number==130
+  ```
+- Lalu, dapat kita lihat bahwa nilai cheksum nya adalah 0x18e5
 
 ## Soal 5
 Elshe menemukan suatu file packet capture yang menarik. Bantulah Elshe untuk menganalisis file packet capture tersebut.<br />
@@ -33,6 +80,19 @@ a. Berapa banyak packet yang berhasil di capture dari file pcap tersebut?<br />
 b. Port berapakah pada server yang digunakan untuk service SMTP?<br />
 c. Dari semua alamat IP yang tercapture, IP berapakah yang merupakan public IP?<br />
 ### Penyelesaian
+
+a. 
+
+b.
+- Filter menggunakan
+  ```
+  smtp
+  ```
+- Lalu pilih salah satu paket
+- Sehingga dapat terlihat nilai port nya yaitu **25**
+
+c. 
+
 
 ## Soal 6
 Soal 6-7 menggunakan file pcap yang sama.
@@ -42,15 +102,31 @@ Seorang anak bernama Udin Berteman dengan SlameT yang merupakan seorang penggema
 ## Soal 7
 Berapa jumlah packet yang menuju IP 184.87.193.88?
 ### Penyelesaian
+- Filter menggunakan
+  ```
+  ip.dst == 184.87.193.88
+  ```
+184.87.193.88
 
 ## Soal 8
 Berikan kueri filter sehingga wireshark hanya mengambil semua protokol paket yang menuju port 80! (Jika terdapat lebih dari 1 port, maka urutkan sesuai dengan abjad)
 ### Penyelesaian
+- Filter menggunakan
+  ```
+  tcp.dstport == 80 || udp.dstport == 80
+  ```
 
 ## Soal 9
 Berikan kueri filter sehingga wireshark hanya mengambil paket yang berasal dari alamat 10.51.40.1 tetapi tidak menuju ke alamat 10.39.55.34!
 ### Penyelesaian
-
+- Filter menggunakan
+  ```
+  ip.src == 10.51.40.1 && ip.dst != 10.39.55.34
+  ```
 ## Soal 10
 Sebutkan kredensial yang benar ketika user mencoba login menggunakan Telnet
 ### Penyelesaian
+- Filter menggunakan
+  ```
+  telnet
+  ```
