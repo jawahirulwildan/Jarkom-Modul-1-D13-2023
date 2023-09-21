@@ -12,7 +12,11 @@ c. Berapakah sequence number (raw) pada packet yang menunjukkan response dari ak
 d. Berapakah acknowledge number (raw) pada packet yang menunjukkan response dari aktivitas tersebut?<br />
 
 ### Penyelesaian
+![No Image](https://github.com/jawahirulwildan/Jarkom-Modul-1-D13-2023/blob/main/img/1a.png)
+<p align="center">
 Soal a dan b
+</p>
+
 - Filter menggunakan
   ```
   ftp
@@ -22,7 +26,11 @@ Soal a dan b
 a. sequence number (raw) : 258040667<br />
 b. acknowledge number (raw) : 104486103925<br />
 
+![No Image](https://github.com/jawahirulwildan/Jarkom-Modul-1-D13-2023/blob/main/img/1cd.png)
+<p align="center">
 Soal c dan d
+</p>
+
 - Filter menggunakan
   ```
   ftp
@@ -35,6 +43,7 @@ b. acknowledge number (raw) : 258040696<br />
 ## Soal 2
 Sebutkan web server yang digunakan pada portal praktikum Jaringan Komputer!
 ### Penyelesaian
+![No Image](https://github.com/jawahirulwildan/Jarkom-Modul-1-D13-2023/blob/main/img/2.png)
 
 - Filter menggunakan
   ```
@@ -51,14 +60,17 @@ a. Berapa banyak paket yang tercapture dengan IP source maupun destination addre
 b. Protokol layer transport apa yang digunakan?<br />
 ### Penyelesaian
 Diketahui bahwa IP 239.255.255.250 dengan Port 3702
-
-a. - Filter menggunakan
+![No Image](https://github.com/jawahirulwildan/Jarkom-Modul-1-D13-2023/blob/main/img/3.png)
+a. 
+- Filter menggunakan
   ```
   ip.src == 239.255.255.250 || ip.addr == 239.255.255.250 && udp.port == 3702
   ```
-- Lalu, dapat kita hitung paket yang tercapture yaitu sebanyak **21 paket**
+- Lalu, dapat kita hitung paket yang tercapture yaitu sebanyak **21 paket**<br />
 
-b.  - Filter menggunakan
+![No Image](https://github.com/jawahirulwildan/Jarkom-Modul-1-D13-2023/blob/main/img/3.png)
+b.  
+- Filter menggunakan
   ```
   ip.src == 239.255.255.250 || ip.addr == 239.255.255.250 && udp.port == 3702
   ```
@@ -68,11 +80,13 @@ b.  - Filter menggunakan
 ## Soal 4
 Berapa nilai checksum yang didapat dari header pada paket nomor 130?
 ### Penyelesaian
+![No Image](https://github.com/jawahirulwildan/Jarkom-Modul-1-D13-2023/blob/main/img/4.png)
+
 - Filter menggunakan
   ```
   frame.number==130
   ```
-- Lalu, dapat kita lihat bahwa nilai cheksum nya adalah 0x18e5
+- Lalu, dapat kita lihat bahwa nilai cheksum nya adalah **0x18e5**
 
 ## Soal 5
 Elshe menemukan suatu file packet capture yang menarik. Bantulah Elshe untuk menganalisis file packet capture tersebut.<br />
@@ -81,8 +95,10 @@ b. Port berapakah pada server yang digunakan untuk service SMTP?<br />
 c. Dari semua alamat IP yang tercapture, IP berapakah yang merupakan public IP?<br />
 ### Penyelesaian
 
-a. 
+a. ![No Image](URL_gambar)
 
+<br />
+![No Image](URL_gambar)
 b.
 - Filter menggunakan
   ```
@@ -91,7 +107,7 @@ b.
 - Lalu pilih salah satu paket
 - Sehingga dapat terlihat nilai port nya yaitu **25**
 
-c. 
+c. ![No Image](URL_gambar)
 
 
 ## Soal 6
