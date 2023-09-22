@@ -95,11 +95,13 @@ b. Port berapakah pada server yang digunakan untuk service SMTP?<br />
 c. Dari semua alamat IP yang tercapture, IP berapakah yang merupakan public IP?<br />
 ### Penyelesaian
 
-a. ![No Image](URL_gambar)
+a. Jumlah packet yang berhasil di capture adalah **60 packet**
 
-<br />
-![No Image](URL_gambar)
-b.
+![No Image](https://github.com/jawahirulwildan/Jarkom-Modul-1-D13-2023/blob/6352c8874ea2530e3193dfe82b5722e505e67307/img/5a.png?raw=true)
+
+
+b. Diketahui bahwa file pcap tersebut merupakan file pcap yang berisi aktivitas SMTP
+
 - Filter menggunakan
   ```
   smtp
@@ -107,13 +109,32 @@ b.
 - Lalu pilih salah satu paket
 - Sehingga dapat terlihat nilai port nya yaitu **25**
 
-c. ![No Image](URL_gambar)
+![No Image](https://github.com/jawahirulwildan/Jarkom-Modul-1-D13-2023/blob/6352c8874ea2530e3193dfe82b5722e505e67307/img/5b.png?raw=true)
 
+![No Image](https://github.com/jawahirulwildan/Jarkom-Modul-1-D13-2023/blob/6352c8874ea2530e3193dfe82b5722e505e67307/img/5c.png?raw=true)
+
+
+c. Dari semua address yang tercapture menggunakan filter SMTP, IP yang merupakan public IP adalah `74.53.140.153`
+
+![No Image](https://github.com/jawahirulwildan/Jarkom-Modul-1-D13-2023/blob/main/img/5d.png?raw=true)
 
 ## Soal 6
 Soal 6-7 menggunakan file pcap yang sama.
 Seorang anak bernama Udin Berteman dengan SlameT yang merupakan seorang penggemar film detektif. sebagai teman yang baik, Ia selalu mengajak slamet untuk bermain valoranT bersama. suatu malam, terjadi sebuah hal yang tak terdUga. ketika udin mereka membuka game tersebut, laptop udin menunjukkan sebuah field text dan Sebuah kode Invalid bertuliskan "server SOURCE ADDRESS 7812 is invalid". ketika ditelusuri di google, hasil pencarian hanya menampilkan a1 e5 u21. jiwa detektif slamet pun bergejolak. bantulah udin dan slamet untuk menemukan solusi kode error tersebut.
 ### Penyelesaian
+- Filter menggunakan
+  ```
+  frame.number==7812
+  ```
+![No Image](https://github.com/jawahirulwildan/Jarkom-Modul-1-D13-2023/blob/6352c8874ea2530e3193dfe82b5722e505e67307/img/6a.png?raw=true)
+
+- Lalu, dapat kita lihat informasi terkait source address packet tersebut
+![No Image](https://github.com/jawahirulwildan/Jarkom-Modul-1-D13-2023/blob/main/img/6b.png?raw=true)
+
+- Dari source address yang kita dapatkan, kita memasukkannya ke dalam letter number cipher untuk *decrypt*
+![No Image](https://github.com/jawahirulwildan/Jarkom-Modul-1-D13-2023/blob/main/img/6c.png?raw=true)
+
+- Dari *decrypt* yang kita dapat menghasilkan kode `JDRNJA`
 
 ## Soal 7
 Berapa jumlah packet yang menuju IP 184.87.193.88?
@@ -122,7 +143,9 @@ Berapa jumlah packet yang menuju IP 184.87.193.88?
   ```
   ip.dst == 184.87.193.88
   ```
-184.87.193.88
+![No Image](https://github.com/jawahirulwildan/Jarkom-Modul-1-D13-2023/blob/6352c8874ea2530e3193dfe82b5722e505e67307/img/7.png?raw=true)
+
+- Packet yang terdapat setelah filter adalah sebanyak **6 packet**
 
 ## Soal 8
 Berikan kueri filter sehingga wireshark hanya mengambil semua protokol paket yang menuju port 80! (Jika terdapat lebih dari 1 port, maka urutkan sesuai dengan abjad)
@@ -139,6 +162,7 @@ Berikan kueri filter sehingga wireshark hanya mengambil paket yang berasal dari 
   ```
   ip.src == 10.51.40.1 && ip.dst != 10.39.55.34
   ```
+
 ## Soal 10
 Sebutkan kredensial yang benar ketika user mencoba login menggunakan Telnet
 ### Penyelesaian
@@ -146,3 +170,18 @@ Sebutkan kredensial yang benar ketika user mencoba login menggunakan Telnet
   ```
   telnet
   ```
+![No Image](https://github.com/jawahirulwildan/Jarkom-Modul-1-D13-2023/blob/6352c8874ea2530e3193dfe82b5722e505e67307/img/10a.png?raw=true)
+
+- Lalu ditemukan paket yang memiliki data `password`
+
+![No Image](https://github.com/jawahirulwildan/Jarkom-Modul-1-D13-2023/blob/6352c8874ea2530e3193dfe82b5722e505e67307/img/10b.png?raw=true)
+
+- Dari situ kita follow packetnya
+
+![No Image](https://github.com/jawahirulwildan/Jarkom-Modul-1-D13-2023/blob/6352c8874ea2530e3193dfe82b5722e505e67307/img/10c.png?raw=true)
+
+- Hasil follow menghasilkan stream sebagai berikut
+
+![No Image](https://github.com/jawahirulwildan/Jarkom-Modul-1-D13-2023/blob/6352c8874ea2530e3193dfe82b5722e505e67307/img/10d.png?raw=true)
+
+- Dari stream tersebut bisa diketahui kalau kredensial login Telnet adalah `dhafin:kesayangank0k0`
